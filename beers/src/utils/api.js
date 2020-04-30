@@ -1,28 +1,30 @@
-import axios from 'axios';
-
+import Axios from 'axios';
+import qs from 'qs';
 const KEY = process.env.KEY;
+const URLCORS = process.env.URLCORS
 
 //http://api.brewerydb.com/v2/{endpoint}/?key=KEY
 
 const axios = Axios.create({
-    baseURL: 'https://sandbox-api.brewerydb.com/v2/',
+    baseURL: `${URLCORS}https://sandbox-api.brewerydb.com/v2/`,
     params: {
         key: KEY
         },
     headers: {'content-type': 'application/json'}
 })
 
-export const getBeers = (beerList) => {
+export const beerList = () => {
+    debugger
     return axios({
         method:'GET',
         url: 'beers',
-        data: qs.stringify(beerList)
-    })
-    .then((response)=>{
-            setBeers(response.data);
     })
 }
 
 export const setBeers = (beerList) => {
     window.localStorage.setItem('beerList', JSON.stringify(beerList));
+}
+
+export const getBeers = () => {
+    return JSON.parse(window.localStorage.getItem('beerList'));
 }
