@@ -28,14 +28,11 @@ class BeerListPage extends Component {
     render() {
         return (
             <div>
-                {this.state.beers.map((br, index)=>
-                    // return(<BeerContainer
-                    //     key = {index}
-                    //     name = {br.name} 
-                    // />)
-                    <div key = {index} className = "beer-container">
-                        <h1>{br.name}</h1>
-                    </div>
+                {this.state.beers.map((br)=>{
+                    return(<BeerContainer
+                        key = {br.id}
+                        name = {br.name} 
+                    />)}
                 )}
             </div>
         )
