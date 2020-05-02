@@ -5,7 +5,6 @@ const axios = require("axios");
 const apiKey = process.env.KEY
 const apiURL = process.env.URL
 
-/* GET beers from api. */
 router.get('/', function(req, res, next) {
   const url = `https://sandbox-api.brewerydb.com/v2/beers?withBreweries=Y&key=659d5c6b8f3d2447f090119e48202fdb`;
   axios
@@ -24,8 +23,6 @@ router.get('/', function(req, res, next) {
 router.get('/breweries', function(req, res, next) {
   const url = `https://sandbox-api.brewerydb.com/v2/breweries?withLocations=Y&key=659d5c6b8f3d2447f090119e48202fdb`;
 
-
-
   axios
     .get(url)
     .then(response =>{
@@ -38,5 +35,21 @@ router.get('/breweries', function(req, res, next) {
     })
 });
 
+
+router.get('/breweries/:id', function(req, res, next) {
+  const brId = req.params.id
+  const url = `https://sandbox-api.brewerydb.com/v2/brewery/${brId}/beers?key=659d5c6b8f3d2447f090119e48202fdb`;
+
+  axios
+    .get(url)
+    .then(response =>{
+      res.json({beersById: response.data.data})
+    })
+    .catch(err => {
+      console.log(`get beersById error: ${err}`)
+      res.status(500);
+      res.json({err})
+    })
+});
 
 module.exports = router;
