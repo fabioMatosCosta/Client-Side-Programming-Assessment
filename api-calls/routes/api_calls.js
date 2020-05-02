@@ -7,7 +7,7 @@ const apiURL = process.env.URL
 
 /* GET beers from api. */
 router.get('/', function(req, res, next) {
-  const url = `http://api.brewerydb.com/v2/beers/?key=659d5c6b8f3d2447f090119e48202fdb`;
+  const url = `https://sandbox-api.brewerydb.com/v2/beers?withBreweries=Y&key=659d5c6b8f3d2447f090119e48202fdb`;
   axios
     .get(url)
     .then(response =>{
