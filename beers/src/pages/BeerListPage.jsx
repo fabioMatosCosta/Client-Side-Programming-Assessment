@@ -1,31 +1,17 @@
 import React, { Component } from 'react';
-import BeerContainer from '../components/BeerContainer';
-import BreweryContainer from '../components/BreweryContainer'
-import { getBeers , beerList , setBeers, breweries, setBreweries, getBreweries} from '../utils/api';
+import BreweryContainer from '../components/BreweryContainer';
+import { breweries, setBreweries, getBreweries} from '../utils/api';
 
 class BeerListPage extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            beers: [],
             breweries: []
         }
     }
 
     componentDidMount(){
-        // beerList()
-        // .then((response)=>{
-        //     console.log(response.data.beers.data)
-        //     setBeers(response.data.beers.data);
-        // })
-        // .then(()=>{
-        //     this.setState({beers: getBeers()})
-        // })
-        // .catch((err)=>{
-        //     console.log(err)
-        // })
-
         breweries()
         .then((response)=>{
             console.log(response.data)
@@ -42,14 +28,20 @@ class BeerListPage extends Component {
 
     render() {
         return (
-            <div>
-                {this.state.breweries.map((br)=>{
-                    return(<BreweryContainer
-                        key = {br.id}
-                        name = {br.name}
-                        loc = {br.locations[0].countryIsoCode}
-                    />)}
-                )}
+            <div className = "columns is-multiline">
+                <div className = "column">
+                    <p>Click Brewery to see beers:</p>
+                    {this.state.breweries.map((br)=>{
+                        return(<BreweryContainer
+                            key = {br.id}
+                            id = {br.id}
+                            name = {br.name}
+                            loc = {br.locations[0].countryIsoCode}
+                        />)}
+                    )}
+                </div>
+                <div className = "column">
+                </div>
             </div>
         )
     }
