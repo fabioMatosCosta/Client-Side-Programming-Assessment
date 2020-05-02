@@ -23,14 +23,28 @@ const axios = Axios.create({
 export const beerList = () => {
     return axios({
         method:'GET',
-        url: 'beers',
+        url: 'beers'
     })
 }
-
 export const setBeers = (beerList) => {
     window.localStorage.setItem('beerList', JSON.stringify(beerList));
 }
 
 export const getBeers = () => {
     return JSON.parse(window.localStorage.getItem('beerList'));
+}
+
+export const breweries = () => {
+    return axios({
+        method:'GET',
+        url: 'beers/breweries'
+    })
+}
+
+export const setBreweries = (breweries) => {
+    window.localStorage.setItem('breweries', JSON.stringify(breweries));
+}
+
+export const getBreweries = () => {
+    return JSON.parse(window.localStorage.getItem('breweries'));
 }

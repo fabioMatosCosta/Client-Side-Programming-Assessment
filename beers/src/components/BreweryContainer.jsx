@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 
-class BeerContainer extends Component {
+class BreweryContainer extends Component {
     constructor(props) {
         super(props)
     }
 
     render() {
         return (
-            <div className = "beer-container">
+            <div className = "brewery-container">
                 <h1>{this.props.name}</h1>
-                <p>Style : {this.props.style}</p>
+                <p>{this.props.loc}</p>
             </div>
         )
     }
 }
 
-export default BeerContainer
+export default BreweryContainer
