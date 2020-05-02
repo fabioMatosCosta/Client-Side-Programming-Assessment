@@ -5,16 +5,20 @@ const URLCORS = process.env.URLCORS
 
 //http://api.brewerydb.com/v2/{endpoint}/?key=KEY
 
+// const axios = Axios.create({
+//     baseURL: `https://sandbox-api.brewerydb.com/v2/`,
+//     params: {
+//         key: KEY
+//         },
+//     headers: {'content-type': 'application/json'}
+// })
 const axios = Axios.create({
-    baseURL: `${URLCORS}https://sandbox-api.brewerydb.com/v2/`,
-    params: {
-        key: KEY
-        },
+    baseURL: `http://localhost:3001/`,
     headers: {'content-type': 'application/json'}
 })
 
+
 export const beerList = () => {
-    debugger
     return axios({
         method:'GET',
         url: 'beers',

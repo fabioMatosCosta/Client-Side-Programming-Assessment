@@ -14,10 +14,11 @@ class BeerListPage extends Component {
     componentDidMount(){
         beerList()
         .then((response)=>{
-            setBeers(response.data);
+            console.log(response.data.beers.data)
+            setBeers(response.data.beers.data);
         })
-        .then((response)=>{
-            this.setState({beers: response.data})
+        .then(()=>{
+            this.setState({beers: getBeers()})
         })
         .catch((err)=>{
             console.log(err)
@@ -27,12 +28,15 @@ class BeerListPage extends Component {
     render() {
         return (
             <div>
-                {this.state.beers.map((br)=> 
-                    <BeerContainer
-                        key = {br.id}
-                        name = {br.name} 
-                    />
-                    )}
+                {this.state.beers.map((br, index)=>
+                    // return(<BeerContainer
+                    //     key = {index}
+                    //     name = {br.name} 
+                    // />)
+                    <div key = {index} className = "beer-container">
+                        <h1>{br.name}</h1>
+                    </div>
+                )}
             </div>
         )
     }
