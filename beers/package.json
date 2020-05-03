@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "bulma": "^0.8.2",
+    "google-map-react": "^1.1.7",
     "qs": "^6.9.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

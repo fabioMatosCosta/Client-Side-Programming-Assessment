@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {getBeers} from '../utils/api';
-import Beer from '../components/Beer'
+import Beer from '../components/Beer';
+import './BeersContainer.css';
+
 
 class BeerContainer extends Component {
     constructor(props) {
@@ -22,14 +24,18 @@ class BeerContainer extends Component {
 
     render() {
         return (
-            <div>
-                {this.state.beers.map((beer)=>{
-                        return(<Beer
-                            key = {beer.id}
-                            name = {beer.name}
-                            style = {beer.style.name}
-                        />)}
-                    )}
+            <div className = "columns">
+                <div className = "column">
+                    {this.state.beers.map((beer)=>{
+                            return(<Beer
+                                key = {beer.id}
+                                name = {beer.name}
+                                style = {beer.style.name}
+                            />)}
+                        )}
+                </div>
+                <div className = "column">
+                </div>
             </div>
         )
     }

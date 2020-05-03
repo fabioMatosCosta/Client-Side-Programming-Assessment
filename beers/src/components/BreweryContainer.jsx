@@ -12,7 +12,8 @@ class BreweryContainer extends Component {
                 <Link to= {`/beers/${this.props.id}`}>
                     <h1 className = "button is-link">{this.props.name}</h1>
                 </Link>
-                <p>{this.props.loc}</p>
+                <p>Country: {this.props.loc}</p>
+
             </div>
         )
     }
