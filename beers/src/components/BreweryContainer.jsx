@@ -8,12 +8,10 @@ class BreweryContainer extends Component {
 
     render() {
         return (
-            <div className = "brewery-container">
+            <div>
                 <Link to= {`/beers/${this.props.id}/${this.props.name}`}>
-                    <h1 className = "button is-link is-rounded">{this.props.name}</h1>
+                    <button className = "button is-link is-rounded">{this.props.name}</button>
                 </Link>
-                {/* <p>Country: {this.props.loc}</p> */}
-
             </div>
         )
     }

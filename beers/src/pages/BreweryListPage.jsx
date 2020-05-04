@@ -3,6 +3,9 @@ import BreweryContainer from '../components/BreweryContainer';
 import { breweries, setBreweries, getBreweries, locations, setLocations, getLocations, getCountries} from '../utils/api';
 import GoogleMapReact from 'google-map-react';
 import {Link} from "react-router-dom";
+import DefaultLayout from '../layout/Default';
+import '../styles/BeersContainer.css';
+
 let API_KEY = process.env.REACT_APP_APIKEY;
 
 class BreweryList extends Component {
@@ -80,25 +83,34 @@ class BreweryList extends Component {
 
     render() {
         return (
-            <div className = "columns is-multiline">
+            <DefaultLayout>
+            <div className = "columns is-multiline beers">
                 <div className = "column">
-                    <h1 className= "title">Breweries:</h1>
-                    <div className = "dropdown">
-                        <select name="countryFilter" id="countryFilter" value={this.state.selected.toString()} onChange={this.handleChange}>
-                            <option name="countryFilter" value="all">
-                                All Countries
-                            </option>
-                            {this.state.countries.map((country, index)=>{
-                                return(
-                                    <option name="countryFilter" value={country} key={index}>
-                                        {country}
+                    <h1 className= "title is-pulled-left">Breweries:</h1>
+                    <div class="field">
+                        <div class="control has-icons-left">
+                            <div class="select is-info is-rounded">
+                                <select name="countryFilter" id="countryFilter" value={this.state.selected.toString()} onChange={this.handleChange}>
+                                    <option name="countryFilter" value="all">
+                                        All Countries
                                     </option>
-                                )}
-                            )}
-                        </select>
+                                    {this.state.countries.map((country, index)=>{
+                                        return(
+                                            <option name="countryFilter" value={country} key={index}>
+                                                {country}
+                                            </option>
+                                        )}
+                                    )}
+                                </select>
+                            </div>
+                            <span className="icon is-small is-left">
+                                🌍
+                            </span>
+                        </div>
                     </div>
 
-                    <p className = "subtitle">Click Brewery to see beers</p>
+                    <p className = "is-pulled-left">Click Brewery to see beers</p>
+                        <br></br>
                         {this.state.filteredBreweries.map((br)=>{
                             return(
                             <div className = "buttons">
@@ -135,6 +147,7 @@ class BreweryList extends Component {
                     </div>
                 </div>
             </div>
+            </DefaultLayout>
         )
     }
 }

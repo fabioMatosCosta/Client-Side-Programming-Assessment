@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {getBeers} from '../utils/api';
 import Beer from '../components/Beer';
-import './BeersContainer.css';
+import '../styles/BeersContainer.css';
+import DefaultLayout from '../layout/Default';
 
 
 class BeerContainer extends Component {
@@ -30,7 +31,8 @@ class BeerContainer extends Component {
 
     render() {
         return (
-            <div>
+            <DefaultLayout>
+            <div className = "beers">
                 <h1 className = "title is-1">{this.state.name}</h1>
                 <div className = "columns">
                     <div className = "column">
@@ -43,9 +45,11 @@ class BeerContainer extends Component {
                             )}
                     </div>
                     <div className = "column">
+                        
                     </div>
                 </div>
             </div>
+            </DefaultLayout>
         )
     }
 }
