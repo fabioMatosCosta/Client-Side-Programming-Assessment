@@ -8,7 +8,8 @@ class BeerContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            beers: []
+            beers: [],
+            name: this.props.match.params.name
         }
     }
 
@@ -17,24 +18,32 @@ class BeerContainer extends Component {
         let id = this.props.match.params.id;
         getBeers(id)
         .then((response)=>{
-            console.log(response.data.beersById)
-            this.setState({beers: response.data.beersById})
+            let brewery = response.data 
+            console.log(brewery)
+            let brs = response.data.beersById.filter(br => {
+                return br.hasOwnProperty("style")
+            })
+            console.log(brs)
+            this.setState({beers: brs})
         })
     }
 
     render() {
         return (
-            <div className = "columns">
-                <div className = "column">
-                    {this.state.beers.map((beer)=>{
-                            return(<Beer
-                                key = {beer.id}
-                                name = {beer.name}
-                                style = {beer.style.name}
-                            />)}
-                        )}
-                </div>
-                <div className = "column">
+            <div>
+                <h1 className = "title is-1">{this.state.name}</h1>
+                <div className = "columns">
+                    <div className = "column">
+                        {this.state.beers.map((beer)=>{
+                                return(<Beer
+                                    key = {beer.id}
+                                    name = {beer.nameDisplay}
+                                    style = {beer.style.shortName}
+                                />)}
+                            )}
+                    </div>
+                    <div className = "column">
+                    </div>
                 </div>
             </div>
         )

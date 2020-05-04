@@ -51,4 +51,19 @@ router.get('/breweries/:id', function(req, res, next) {
     })
 });
 
+router.get('/locations', function(req, res, next) {
+  const url = `https://sandbox-api.brewerydb.com/v2/locations?order=countryIsoCode&key=${apiKey}`;
+
+  axios
+    .get(url)
+    .then(response =>{
+      res.json(response.data.data)
+    })
+    .catch(err => {
+      console.log(`get locations error: ${err}`)
+      res.status(500);
+      res.json({err})
+    })
+});
+
 module.exports = router;
