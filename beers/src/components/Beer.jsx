@@ -7,6 +7,7 @@ class Beer extends Component {
 
     render() {
         return (
+            
             <div className = "columns">
                 <div className = "column">
                     <h3 className="is-size-5">Beer name:</h3>

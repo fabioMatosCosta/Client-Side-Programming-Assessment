@@ -87,9 +87,9 @@ class BreweryList extends Component {
             <div className = "columns is-multiline beers">
                 <div className = "column">
                     <h1 className= "title is-pulled-left">Breweries:</h1>
-                    <div class="field">
-                        <div class="control has-icons-left">
-                            <div class="select is-info is-rounded">
+                    <div className="field">
+                        <div className="control has-icons-left">
+                            <div className="select is-info is-rounded">
                                 <select name="countryFilter" id="countryFilter" value={this.state.selected.toString()} onChange={this.handleChange}>
                                     <option name="countryFilter" value="all">
                                         All Countries

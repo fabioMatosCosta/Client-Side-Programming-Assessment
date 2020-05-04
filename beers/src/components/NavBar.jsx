@@ -5,7 +5,7 @@ function NavBar() {
     return (
         <div>
             <nav className="navbar is-warning is-fixed-top" role="navigation" aria-label="main navigation">
-                <div class="navbar-brand">
+                <div className="navbar-brand">
                     <Link to = {'/'}>
                         <h1 className="title">BreweryDB <span>🍺</span></h1>
                     </Link>
