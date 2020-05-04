@@ -9,13 +9,15 @@ class Beer extends Component {
         return (
             <div className = "columns">
                 <div className = "column">
-                    <p className = "bd-notification is-info">Beer name: {this.props.name}</p>
+                    <h3 className="is-size-5">Beer name:</h3>
+                    <p className = "bd-notification is-info"> {this.props.name}</p>
                 </div>
                 <div className = "column">
+                    <h3 className="is-size-5">Style:</h3>
                     {this.props.style ?
-                        <p>Style: {this.props.style}</p>
+                        <p>{this.props.style}</p>
                         :
-                        <p>Style: Not specified</p>
+                        <p>Not specified</p>
                     }
                 </div>
             </div>
