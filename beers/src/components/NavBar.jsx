@@ -11,7 +11,11 @@ function NavBar() {
                     </Link>
                 </div>
                 <div className="navbar-menu">
-                    
+                    <div className="navbar-item">
+                        <Link to = {'/'}>
+                            <h1 className="subtitle ">Home</h1>
+                        </Link>
+                    </div>
                 </div>
             </nav>
         </div>

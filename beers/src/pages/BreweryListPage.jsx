@@ -111,18 +111,19 @@ class BreweryList extends Component {
 
                     <p className = "is-pulled-left">Click Brewery to see beers</p>
                         <br></br>
-                        {this.state.filteredBreweries.map((br)=>{
-                            return(
-                            <div className = "buttons">
-                                <BreweryContainer
-                                    key = {br.id}
-                                    id = {br.id}
-                                    name = {br.name}
-                                    loc = {br.locations[0].country.name}
-                                />
-                            </div>
+                        <div className = "buttons">
+                            {this.state.filteredBreweries.map((br)=>{
+                                return(
+                                    <BreweryContainer
+                                        key = {br.id}
+                                        id = {br.id}
+                                        name = {br.name}
+                                        loc = {br.locations[0].country.name}
+                                    />
+                                
+                                )}
                             )}
-                        )}
+                        </div>
                 </div>
                 <div className = "column">
                     <h1 className="title">Breweries locations:</h1>

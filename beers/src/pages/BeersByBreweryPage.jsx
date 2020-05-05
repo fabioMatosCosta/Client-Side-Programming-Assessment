@@ -5,7 +5,7 @@ import '../styles/BeersContainer.css';
 import DefaultLayout from '../layout/Default';
 import SearchByName from '../components/SearchByName';
 import SearchByType from '../components/SearchByType';
-
+import BeerDetail from '../components/BeerDetail';
 
 
 class BeerContainer extends Component {
@@ -15,13 +15,23 @@ class BeerContainer extends Component {
             beers: [],
             name: this.props.match.params.name,
             searchBy: "all",
-            type: "",
-            filteredBeers: []
+            filteredBeers: [],
+            clickedBeer: {
+                name: "Click on a beer to see more details!",
+                nameDisplay: "",
+                style:{
+                    name: "",
+                    description: ""
+                },
+                labels: {
+                    contentAwareMedium: ""
+                }
+            },
         }
         this.handleChangeSearchBy=this.handleChangeSearchBy.bind(this);
         this.handleSearchByName=this.handleSearchByName.bind(this);
         this.handleSearchByType=this.handleSearchByType.bind(this);
-        this.resetBeers=this.resetBeers.bind(this);
+        this.clickBeer=this.clickBeer.bind(this);
     }
 
     
@@ -72,10 +82,19 @@ class BeerContainer extends Component {
         })
     }
 
-    resetBeers(){
-        this.setState({
-            filteredBeers: this.state.beers
-        })
+    clickBeer(br){
+        if(!br.beer.labels){
+            let newBr = {...br.beer}
+            newBr.labels = ""
+            this.setState({
+                clickedBeer: newBr
+            })
+        }else{
+            this.setState({
+                clickedBeer: br.beer
+            })
+        }
+        console.log(this.state.clickedBeer)
     }
 
     render() {
@@ -122,17 +141,29 @@ class BeerContainer extends Component {
                     </div>
                 </div>
                 <div className = "columns">
-                    <div className = "column">
-                        {this.state.filteredBeers.map((beer)=>{
-                            return(<Beer
-                                key = {beer.id}
-                                name = {beer.nameDisplay}
-                                style = {beer.style.shortName}
-                            />)}
-                        )}
+                    <div className = "column is-two-thirds">
+                        <div className="buttons">
+                            {this.state.filteredBeers.map((beer)=>{
+                                return(
+                                    <div  key = {beer.id} onClick={this.clickBeer.bind(this, {beer})}>
+                                        <Beer
+                                            key = {beer.id}
+                                            name = {beer.nameDisplay}
+                                            style = {beer.style.shortName}
+                                        />
+                                    </div>
+                                )}
+                            )}
+                        </div>
                     </div>
                     <div className = "column">
-                        
+                        <BeerDetail
+                            name = {this.state.clickedBeer.name}
+                            nameDisplay = {this.state.nameDisplay}
+                            type = {this.state.clickedBeer.style.name}
+                            description = {this.state.clickedBeer.style.description}
+                            img = {this.state.clickedBeer.labels.contentAwareMedium}
+                        />
                     </div>
                 </div>
             </div>
