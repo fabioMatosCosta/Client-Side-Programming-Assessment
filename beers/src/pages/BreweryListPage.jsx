@@ -103,13 +103,13 @@ class BreweryList extends Component {
                                     )}
                                 </select>
                             </div>
-                            <span className="icon is-small is-left">
+                            <span className="icon is-small is-left" role="img" aria-label ="world">
                                 🌍
                             </span>
                         </div>
                     </div>
 
-                    <p className = "is-pulled-left">Click Brewery to see beers</p>
+                    <p className = " subtitle">Click on a brewery to see the beers they make </p>
                         <br></br>
                         <div className = "buttons">
                             {this.state.filteredBreweries.map((br)=>{
@@ -139,12 +139,12 @@ class BreweryList extends Component {
                                             lat={br.latitude}
                                             lng={br.longitude}
                                         >
-                                        <span>🍺</span>
+                                        <span role="img" aria-label ="beer">🍺</span>
                                         </Link>
                                 )}
                             )}
                         </GoogleMapReact>
-                        <p>Click the beer icon <span>🍺</span> on the map to see details of the brewery</p>
+                        <p>Click the beer icon <span role="img" aria-label ="beer">🍺</span> on the map to see details of the brewery</p>
                     </div>
                 </div>
             </div>

@@ -121,14 +121,13 @@ class BeerContainer extends Component {
             <DefaultLayout>
             <div className = "beers">
                 <h1 className = "title is-1">{this.state.name}</h1>
-                <div className = "columns">
-                    <div className = "column">
+                <div className = "columns is-8 ">
+                    <div className = "column is-one-fifth">
                         <div className="field is-quarter">
                         <div className="control">
                             <div className="select is-info is-rounded">
-                                <p className = "is-pulled-left">Search by: </p>
                                 <select name="searchBy" id="searchBy" onChange={this.handleChangeSearchBy}>
-                                    <option name="searchBy" value="all">All Beers</option>
+                                    <option name="searchBy" value="all">Search by</option>
                                     <option name="searchBy" value="name">Name</option>
                                     <option name="searchBy" value="type">Type</option>
                                 </select>
@@ -139,6 +138,15 @@ class BeerContainer extends Component {
                     <div className = "column">
                         {searchComponent}
                     </div>
+                </div>
+                <div className="columns">
+                    <div className ="column">
+                        <p className ="subtitle">Beers:</p>
+                    </div>
+                    <div className ="column">
+                        <p className ="subtitle">Details:</p>
+                    </div>
+
                 </div>
                 <div className = "columns">
                     <div className = "column is-two-thirds">

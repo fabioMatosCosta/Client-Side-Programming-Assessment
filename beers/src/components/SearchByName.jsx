@@ -23,7 +23,7 @@ class SearchByName extends Component {
                 <div className="field-body">
                     <div className="field">
                         <p className="control">
-                            <input className="input is-info is-pulled-left is-focused is-rounded is-medium" type="text" placeholder = "Search by name" value={this.state.filter} onChange={this.handleSearch}/>
+                            <input className="input is-info is-pulled-left is-focused is-rounded" type="text" placeholder = "Search by name" value={this.state.filter} onChange={this.handleSearch}/>
                         </p>
                     </div>
                 </div>
