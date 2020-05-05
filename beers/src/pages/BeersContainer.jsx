@@ -14,9 +14,14 @@ class BeerContainer extends Component {
         this.state = {
             beers: [],
             name: this.props.match.params.name,
-            searchBy: "all"
+            searchBy: "all",
+            type: "",
+            filteredBeers: []
         }
         this.handleChangeSearchBy=this.handleChangeSearchBy.bind(this);
+        this.handleSearchByName=this.handleSearchByName.bind(this);
+        this.handleSearchByType=this.handleSearchByType.bind(this);
+        this.resetBeers=this.resetBeers.bind(this);
     }
 
     
@@ -30,7 +35,10 @@ class BeerContainer extends Component {
                 return br.hasOwnProperty("style")
             })
             console.log(brs)
-            this.setState({beers: brs})
+            this.setState({
+                beers: brs,
+                filteredBeers: brs
+            })
         })
     }
 
@@ -42,6 +50,34 @@ class BeerContainer extends Component {
         })
     }
 
+    handleSearchByName(nameSearch){
+        let filterTheBeers = this.state.beers.filter((item)=>{
+            return(
+                item.name.toLowerCase().includes(nameSearch.toLowerCase())
+            )
+        })
+        this.setState({
+            filteredBeers: filterTheBeers
+        })
+    }
+
+    handleSearchByType(typeSearch){
+        let filterTheBeers = this.state.beers.filter((item)=>{
+            return(
+                item.style.shortName.toLowerCase().includes(typeSearch.toLowerCase())
+            )
+        })
+        this.setState({
+            filteredBeers: filterTheBeers
+        })
+    }
+
+    resetBeers(){
+        this.setState({
+            filteredBeers: this.state.beers
+        })
+    }
+
     render() {
         let searchComponent = <div></div>;
 
@@ -50,13 +86,13 @@ class BeerContainer extends Component {
         }else if(this.state.searchBy === "name") {
             searchComponent = (
                 <SearchByName
-                    handleSearch={this.handleSearchByDistance}
+                    handleSearch={this.handleSearchByName}
                 />
             );
         }else if(this.state.searchBy === "type") {
             searchComponent = (
                 <SearchByType 
-                    handleSearch={this.handleSearchByName} 
+                    handleSearch={this.handleSearchByType} 
                     type={this.state.type}
                 />
             );
@@ -68,7 +104,7 @@ class BeerContainer extends Component {
                 <h1 className = "title is-1">{this.state.name}</h1>
                 <div className = "columns">
                     <div className = "column">
-                        <div className="field">
+                        <div className="field is-quarter">
                         <div className="control">
                             <div className="select is-info is-rounded">
                                 <p className = "is-pulled-left">Search by: </p>
@@ -79,22 +115,21 @@ class BeerContainer extends Component {
                                 </select>
                             </div>
                         </div>
-                </div>
                     </div>
+                </div>
                     <div className = "column">
                         {searchComponent}
                     </div>
                 </div>
-              
                 <div className = "columns">
                     <div className = "column">
-                        {this.state.beers.map((beer)=>{
-                                return(<Beer
-                                    key = {beer.id}
-                                    name = {beer.nameDisplay}
-                                    style = {beer.style.shortName}
-                                />)}
-                            )}
+                        {this.state.filteredBeers.map((beer)=>{
+                            return(<Beer
+                                key = {beer.id}
+                                name = {beer.nameDisplay}
+                                style = {beer.style.shortName}
+                            />)}
+                        )}
                     </div>
                     <div className = "column">
                         
