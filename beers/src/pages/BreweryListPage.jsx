@@ -144,7 +144,7 @@ class BreweryList extends Component {
                                 )}
                             )}
                         </GoogleMapReact>
-                        <p>Click the beer icon <span role="img" aria-label ="beer">🍺</span> on the map to see details of the brewery</p>
+                        <p>Click the beer icon <span role="img" aria-label ="beer">🍺</span> on the map to see beers of the brewery</p>
                     </div>
                 </div>
             </div>
