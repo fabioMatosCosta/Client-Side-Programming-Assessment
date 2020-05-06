@@ -27,8 +27,8 @@ I built a small NodeJs server where I communicate with the API. I used ReactJs f
 	
 #### Challenges
 
--I tried calling the API directly from the front-end, but I was getting a CORS error, so I built a small server to communicate with the API. 
--Getting all the beers from the API seemed a bit tricky, because there were 23 pages of beers and I never dealt with pagination before, I was afraid that I would get some trouble with asynchronicity. Then I noticed that all the locations were related with the breweries, so I decided to use them instead.
--There are many breweries that have different locations, so I just display the main brewery on the home page list, but in the map there are all the locations.
+- I tried calling the API directly from the front-end, but I was getting a CORS error, so I built a small server to communicate with the API. 
+- Getting all the beers from the API seemed a bit tricky, because there were 23 pages of beers and I never dealt with pagination before, I was afraid that I would get some trouble with asynchronicity. Then I noticed that all the locations were related with the breweries, so I decided to use them instead.
+- There are many breweries that have different locations, so I just display the main brewery on the home page list, but in the map there are all the locations.
 
 
