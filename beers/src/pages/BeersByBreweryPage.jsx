@@ -40,15 +40,16 @@ class BeerContainer extends Component {
         getBeers(id)
         .then((response)=>{
             let brewery = response.data 
-            console.log(brewery)
             let brs = response.data.beersById.filter(br => {
                 return br.hasOwnProperty("style")
             })
-            console.log(brs)
             this.setState({
                 beers: brs,
                 filteredBeers: brs
             })
+        })
+        .catch((err)=>{
+            console.log(err)
         })
     }
 
@@ -94,7 +95,6 @@ class BeerContainer extends Component {
                 clickedBeer: br.beer
             })
         }
-        console.log(this.state.clickedBeer)
     }
 
     render() {

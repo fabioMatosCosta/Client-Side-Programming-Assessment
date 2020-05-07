@@ -23,7 +23,7 @@ On the beer brands page, accessible after clicking a brewery, there is a list of
 
 #### Tech
 
-I built a small NodeJs server where I communicate with the API. I used ReactJs for the front-end and used Bulma for the styling.
+I built a small NodeJs server where I communicate with the API(api-calls folder). I used ReactJs for the front-end and used Bulma for the styling(beers folder).
 	
 #### Challenges
 

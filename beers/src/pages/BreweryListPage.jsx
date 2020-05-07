@@ -26,14 +26,12 @@ class BreweryList extends Component {
     componentDidMount(){
         breweries()
         .then((response)=>{
-            console.log(response.data)
             setBreweries(response.data.breweries)
         })
         .then(()=>{
             let brsWithLocation = getBreweries().filter(br => {
                 return br.hasOwnProperty("locations")
             })
-            console.log(brsWithLocation)
             this.setState({
                 breweries: brsWithLocation,
                 filteredBreweries: brsWithLocation
@@ -41,7 +39,6 @@ class BreweryList extends Component {
         })
         locations()
         .then((response)=>{
-            console.log(response.data)
             setLocations(response.data)
         })
         .then(()=>{
